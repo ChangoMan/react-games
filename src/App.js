@@ -30,11 +30,9 @@ class App extends Component {
 
         return (
             <div className="container">
-                <Jumbotron>
-                    <div className="row">
-                        {gamesList}
-                    </div>
-                </Jumbotron>
+                <div className="row">
+                    {gamesList}
+                </div>
             </div>
         );
     }
