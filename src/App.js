@@ -1,39 +1,32 @@
 import React, { Component } from 'react';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+
 import { Jumbotron } from 'reactstrap';
-import gameAPI from './utils/gameAPI';
-import GamesList from './components/GamesList';
+
+import GameGrid from './components/GameGrid';
+import GameDetails from './components/GameDetails';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            games: []
-        }
-    }
-    componentDidMount() {
-        gameAPI.getGames('zelda')
-        .then((games) => {
-
-            this.setState({
-                games: games.data
-            });
-
-        });
-    }
     render() {
-
-        let gamesList = this.state.games.map((game) => {
-            return (
-                <GamesList key={game.id} game={game} />
-            );
-        });
-
         return (
-            <div className="container">
-                <div className="row">
-                    {gamesList}
+            <Router>
+                <div>
+
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/details">Details</Link></li>
+                    </ul>
+
+                    <Route exact path="/" component={GameGrid}/>
+                    <Route path="/details" component={GameDetails}/>
+
                 </div>
-            </div>
+            </Router>
         );
     }
 }

@@ -5,7 +5,7 @@ const axiosIGDB = axios.create({
     headers: {'X-Mashape-Key': 'Fzcb3lSvwomshs3TQAodBXVqyOhyp159Z1qjsn8FH322stHTF4'}
 });
 
-var gameAPI = {
+let gameAPI = {
     getGames : function (game) {
         return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/', {
             params: {
