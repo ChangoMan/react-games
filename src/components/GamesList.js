@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom'
+
 class GamesList extends Component {
     render() {
         return (
@@ -9,7 +11,9 @@ class GamesList extends Component {
                 </div>
                 <div className="card-block">
                     <h4 className="card-title">{this.props.game.name}</h4>
-                    <a href={this.props.game.url} className="btn btn-primary" target="blank">See Game</a>
+                    <Link to={{
+                        pathname: '/details/'+this.props.game.id
+                    }}>See Game</Link>
                 </div>
             </div>
         );

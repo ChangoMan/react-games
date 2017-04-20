@@ -22,6 +22,19 @@ let gameAPI = {
         .catch(function (error) {
             console.warn('Error in getGames', error);
         });
+    },
+    getGamesById : function (gameId) {
+        return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/'+gameId, {
+            params: {
+                fields: "name,summary,url,cover"
+            }
+        })
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            console.warn('Error in getGamesById', error);
+        });
     }
 }
 
