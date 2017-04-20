@@ -9,7 +9,7 @@ let gameAPI = {
     getGames : function (game) {
         return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/', {
             params: {
-                fields: "name,summary,url,cover",
+                fields: "name,summary,url,cover,slug",
                 limit: 10,
                 offset: 0,
                 order: 'release_dates.date:desc',
@@ -26,7 +26,7 @@ let gameAPI = {
     getGamesById : function (gameId) {
         return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/'+gameId, {
             params: {
-                fields: "name,summary,url,cover"
+                fields: "*"
             }
         })
         .then(function (response) {

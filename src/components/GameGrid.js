@@ -10,7 +10,7 @@ class GameGrid extends Component {
             games: []
         }
     }
-    componentDidMount() {
+    componentWillMount() {
         gameAPI.getGames('zelda')
         .then((games) => {
 

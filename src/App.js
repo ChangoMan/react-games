@@ -21,7 +21,7 @@ class App extends Component {
                     </ul>
 
                     <Route exact path="/" component={GameGrid}/>
-                    <Route path="/details/:gameId" component={GameDetails}/>
+                    <Route path="/details/:gameId/:gameSlug" component={GameDetails}/>
 
                 </div>
             </Router>

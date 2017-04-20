@@ -4,16 +4,25 @@ import { Link } from 'react-router-dom'
 
 class GamesList extends Component {
     render() {
+
+        const {game} = this.props;
+
         return (
-            <div className="card text-center" key={this.props.game.id} style={{width: '33.3333333333%'}}>
+            <div className="card text-center" key={game.id} style={{width: '33.3333333333%'}}>
                 <div style={{margin: '20px auto 0'}}>
-                    <img className="card-img-top" src={this.props.game.cover.url} alt={this.props.game.name} />
+                    <Link to={{
+                        pathname: '/details/'+game.id+'/'+game.slug
+                    }}>
+                        <img className="card-img-top" src={game.cover.url} alt={game.name} />
+                    </Link>
                 </div>
                 <div className="card-block">
-                    <h4 className="card-title">{this.props.game.name}</h4>
-                    <Link to={{
-                        pathname: '/details/'+this.props.game.id
-                    }}>See Game</Link>
+                    <h4 className="card-title">{game.name}</h4>
+                    <Link className="btn btn-primary" to={{
+                        pathname: '/details/'+game.id+'/'+game.slug
+                    }}>
+                        See Game
+                    </Link>
                 </div>
             </div>
         );
