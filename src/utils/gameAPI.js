@@ -6,7 +6,7 @@ const axiosIGDB = axios.create({
 });
 
 let gameAPI = {
-    getGames : function (game) {
+    searchGames : function (game) {
         return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/', {
             params: {
                 fields: "name,summary,url,cover,slug",
@@ -14,6 +14,23 @@ let gameAPI = {
                 offset: 0,
                 order: 'release_dates.date:desc',
                 search: game
+            }
+        })
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            console.warn('Error in searchGames', error);
+        });
+    },
+    getPopularGames : function () {
+        return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/', {
+            params: {
+                'fields': "name,summary,url,cover,slug",
+                'limit': 12,
+                'offset': 0,
+                'order': 'release_dates.date:desc:min',
+                'filter[rating][gte]': 80
             }
         })
         .then(function (response) {

@@ -6,8 +6,8 @@ import {
   Link
 } from 'react-router-dom'
 
-import GameGrid from './components/GameGrid';
-import GameDetails from './components/GameDetails';
+import GameGridContainer from './components/GameGridContainer';
+import GameDetailsContainer from './components/GameDetailsContainer';
 
 class App extends Component {
     render() {
@@ -17,11 +17,10 @@ class App extends Component {
 
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/details">Details</Link></li>
                     </ul>
 
-                    <Route exact path="/" component={GameGrid}/>
-                    <Route path="/details/:gameId/:gameSlug" component={GameDetails}/>
+                    <Route exact path="/" component={GameGridContainer}/>
+                    <Route path="/details/:gameId/:gameSlug" component={GameDetailsContainer}/>
 
                 </div>
             </Router>

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import gameAPI from '../utils/gameAPI';
 import GamesList from './GamesList';
 
-class GameGrid extends Component {
+class GameGridContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ class GameGrid extends Component {
         }
     }
     componentWillMount() {
-        gameAPI.getGames('zelda')
+        gameAPI.getPopularGames()
         .then((games) => {
 
             this.setState({
@@ -39,4 +39,4 @@ class GameGrid extends Component {
     }
 }
 
-export default GameGrid;
+export default GameGridContainer;
