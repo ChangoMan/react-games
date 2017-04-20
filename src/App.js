@@ -6,8 +6,6 @@ import {
   Link
 } from 'react-router-dom'
 
-import { Jumbotron } from 'reactstrap';
-
 import GameGrid from './components/GameGrid';
 import GameDetails from './components/GameDetails';
 
@@ -23,7 +21,7 @@ class App extends Component {
                     </ul>
 
                     <Route exact path="/" component={GameGrid}/>
-                    <Route path="/details" component={GameDetails}/>
+                    <Route path="/details/:game" component={GameDetails}/>
 
                 </div>
             </Router>
