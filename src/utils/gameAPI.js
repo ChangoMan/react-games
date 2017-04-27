@@ -30,7 +30,7 @@ let gameAPI = {
                 'limit': 12,
                 'offset': 0,
                 'order': 'release_dates.date:desc:min',
-                'filter[rating][gte]': 80
+                'filter[rating][gte]': 90
             }
         })
         .then(function (response) {

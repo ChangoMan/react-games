@@ -42,17 +42,26 @@ class GameDetailsContainer extends Component {
 
                 let gameCover = game.cover.url.replace("t_thumb", "t_cover_big");
 
+                let screenShots = game.screenshots.map((screenshot) => {
+                    screenshot.url = screenshot.url.replace("t_thumb", "t_screenshot_big");
+                    return screenshot.url;
+                });
+
+                let videos = game.videos.map((video) => {
+                    return video.video_id;
+                });
+
                 return (
-                    <GameDetails {...game} gameCover={gameCover} />
+                    <GameDetails {...game} gameCover={gameCover} screenShots={screenShots} videos={videos} />
                 )
             }
 
         }
 
         return (
-            <div className="container-fluid">
+            <div>
                 <div className="jumbotron jumbotron-fluid">
-                    <div className="container">
+                    <div className="container-fluid">
                         {renderContent()}
                     </div>
                 </div>
