@@ -26,7 +26,7 @@ let gameAPI = {
     getPopularGames : function () {
         return axiosIGDB.get('https://igdbcom-internet-game-database-v1.p.mashape.com/games/', {
             params: {
-                'fields': "name,summary,url,cover,slug",
+                'fields': "*",
                 'limit': 12,
                 'offset': 0,
                 'order': 'release_dates.date:desc:min',
