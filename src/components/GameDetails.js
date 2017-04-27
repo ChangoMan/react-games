@@ -15,7 +15,7 @@ const GameDetails = (props) => (
 
         <h2 className="mt-4 mb-3">Screenshots</h2>
 
-        <div className="row text-center">
+        <div className="row no-gutters text-center">
             <div className="col-sm-4">
                 <p><img className="img-fluid" src={props.screenShots[0]} alt="" /></p>
             </div>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import { Progress } from 'reactstrap'
 
 import { Link } from 'react-router-dom'
 
@@ -7,22 +9,37 @@ class GamesList extends Component {
 
         const {game} = this.props;
 
+        const releaseDate = moment(game.first_release_date).format('MMMM DD, YYYY');
+
+        const rating = Math.round(game.rating);
+
+        const mediaStyles = {
+            border: '1px solid #ddd',
+            padding: '20px',
+            marginBottom: '20px'
+        }
+
         return (
-            <div className="card text-center" key={game.id} style={{width: '33.3333333333%'}}>
-                <div style={{margin: '20px auto 0'}}>
+            <div>
+                <div className="media" key={game.id} style={mediaStyles}>
                     <Link to={{
                         pathname: '/details/'+game.id+'/'+game.slug
                     }}>
-                        <img className="card-img-top" src={game.cover.url} alt={game.name} />
+                        <img className="d-flex mr-4" src={game.cover.url} alt={game.name} />
                     </Link>
-                </div>
-                <div className="card-block">
-                    <h4 className="card-title">{game.name}</h4>
-                    <Link className="btn btn-primary" to={{
-                        pathname: '/details/'+game.id+'/'+game.slug
-                    }}>
-                        See Game
-                    </Link>
+                    <div className="media-body">
+                        <h3 className="mt-0">{game.name}</h3>
+                        <hr />
+                        <p className="mb-1">{releaseDate}</p>
+                        <div className="mb-4">
+                            <Progress color="warning" value={rating}>Rating: {rating}</Progress>
+                        </div>
+                        <Link className="btn btn-primary" to={{
+                            pathname: '/details/'+game.id+'/'+game.slug
+                        }}>
+                            See Game
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
