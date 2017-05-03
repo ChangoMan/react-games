@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 
+let ScreenShots = (props) => {
+    return (
+        <div className="row no-gutters text-center">
+            {props.screenShots.map(function(screenshot) {
+                return (
+                    <div key={screenshot} className="col-sm-4">
+                        <a style={{cursor: 'pointer'}} onClick={props.onToggleModal.bind(null, screenshot)}><img className="img-fluid" src={screenshot} alt="" /></a>
+                    </div>
+                )
+            })}
+        </div>
+    )
+}
+
 class GameDetails extends Component {
     /*toggleModal() {
         console.log(this)
@@ -22,17 +36,16 @@ class GameDetails extends Component {
 
                 <h2 className="mt-4 mb-3">Screenshots</h2>
 
-                <div className="row no-gutters text-center">
-                    <div className="col-sm-4">
-                        <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[0])}><img className="img-fluid" src={this.props.gameMedia.screenShots[0]} alt="" /></a></p>
-                    </div>
-                    <div className="col-sm-4">
-                        <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[1])}><img className="img-fluid" src={this.props.gameMedia.screenShots[1]} alt="" /></a></p>
-                    </div>
-                    <div className="col-sm-4">
-                        <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[2])}><img className="img-fluid" src={this.props.gameMedia.screenShots[2]} alt="" /></a></p>
-                    </div>
+                <ScreenShots screenShots={this.props.gameMedia.screenShots} onToggleModal={this.props.onToggleModal} />
+                {/*<div className="col-sm-4">
+                    <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[0])}><img className="img-fluid" src={this.props.gameMedia.screenShots[0]} alt="" /></a></p>
                 </div>
+                <div className="col-sm-4">
+                    <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[1])}><img className="img-fluid" src={this.props.gameMedia.screenShots[1]} alt="" /></a></p>
+                </div>
+                <div className="col-sm-4">
+                    <p><a onClick={this.props.onToggleModal.bind(null, this.props.gameMedia.screenShots[2])}><img className="img-fluid" src={this.props.gameMedia.screenShots[2]} alt="" /></a></p>
+                </div>*/}
 
                 <h2 className="mt-4 mb-3">Videos</h2>
 
