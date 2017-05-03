@@ -17,8 +17,10 @@ class GameDetailsContainer extends Component {
     }
     componentWillMount() {
 
-        this.setState({
-            isLoading: true
+        this.setState(() => {
+            return {
+                isLoading: true
+            }
         });
 
         const gameId = this.props.match.params.gameId
@@ -26,18 +28,22 @@ class GameDetailsContainer extends Component {
         gameAPI.getGamesById(gameId)
         .then((game) => {
 
-            this.setState({
-                game: game.data[0],
-                isLoading: false
+            this.setState(() => {
+                return {
+                    game: game.data[0],
+                    isLoading: false
+                }
             });
 
         });
     }
 
     handleToggleModal(screenshot) {
-        this.setState({
-            screenshotModal: !this.state.screenshotModal,
-            screenshotModalUrl: screenshot
+        this.setState(() => {
+            return {
+                screenshotModal: !this.state.screenshotModal,
+                screenshotModalUrl: screenshot
+            }
         });
     }
 
@@ -51,19 +57,21 @@ class GameDetailsContainer extends Component {
                 return <h3 className="text-center">Loading...</h3>
             } else {
 
-                let gameCover = game.cover.url.replace("t_thumb", "t_cover_big");
+                let gameMedia = {};
 
-                let screenShots = game.screenshots.map((screenshot) => {
+                gameMedia.gameCover = game.cover.url.replace("t_thumb", "t_cover_big");
+
+                gameMedia.screenShots = game.screenshots.map((screenshot) => {
                     screenshot.url = screenshot.url.replace("t_thumb", "t_screenshot_big");
                     return screenshot.url;
                 });
 
-                let videos = game.videos.map((video) => {
+                gameMedia.videos = game.videos.map((video) => {
                     return video.video_id;
                 });
 
                 return (
-                    <GameDetails {...game} gameCover={gameCover} screenShots={screenShots} videos={videos} screenshotModal={screenshotModal} screenshotModalUrl={screenshotModalUrl} onToggleModal={this.handleToggleModal} />
+                    <GameDetails {...game} gameMedia={gameMedia}  screenshotModal={screenshotModal} screenshotModalUrl={screenshotModalUrl} onToggleModal={this.handleToggleModal} />
                 )
             }
 
