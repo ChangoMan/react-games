@@ -8,8 +8,12 @@ class GameDetailsContainer extends Component {
         super(props);
         this.state = {
             game: {},
-            isLoading: false
+            isLoading: false,
+            screenshotModal: false,
+            screenshotModalUrl: ''
         }
+
+        this.handleToggleModal = this.handleToggleModal.bind(this);
     }
     componentWillMount() {
 
@@ -30,9 +34,16 @@ class GameDetailsContainer extends Component {
         });
     }
 
+    handleToggleModal(screenshot) {
+        this.setState({
+            screenshotModal: !this.state.screenshotModal,
+            screenshotModalUrl: screenshot
+        });
+    }
+
     render() {
 
-        let {game, isLoading} = this.state;
+        let {game, isLoading, screenshotModal, screenshotModalUrl} = this.state;
 
         let renderContent = () => {
 
@@ -52,7 +63,7 @@ class GameDetailsContainer extends Component {
                 });
 
                 return (
-                    <GameDetails {...game} gameCover={gameCover} screenShots={screenShots} videos={videos} />
+                    <GameDetails {...game} gameCover={gameCover} screenShots={screenShots} videos={videos} screenshotModal={screenshotModal} screenshotModalUrl={screenshotModalUrl} onToggleModal={this.handleToggleModal} />
                 )
             }
 

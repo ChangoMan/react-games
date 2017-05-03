@@ -37,7 +37,7 @@ class GamesList extends Component {
                         <Link className="btn btn-primary" to={{
                             pathname: '/details/'+game.id+'/'+game.slug
                         }}>
-                            See Game
+                            More Details
                         </Link>
                     </div>
                 </div>
